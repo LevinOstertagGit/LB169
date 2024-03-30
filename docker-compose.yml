@@ -23,6 +23,7 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: PDz85
       MYSQL_ROOT_PASSWORD: PDz85
+      ports: 3310:3306/tcp
     volumes:
       - db:/var/lib/mysql
 #Volumes = wo die daten gespeichert werden auf dem lokalen Gerät
