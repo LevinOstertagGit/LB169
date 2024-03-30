@@ -1,0 +1,31 @@
+version: '1.1'
+#Benötigte Services werden angegeben 
+services:
+  #Der Wordpress Service und dessen Spezifikationen (Logindaten, name der DB)
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_PASSWORD: PDz85
+      WORDPRESS_DB_NAME: wpdb
+    volumes:
+      - wordpress:/var/www/html
+  #Image der DB (MySQL) werden angegeben, gemeinsam mit den Ports die für den Zugriff per Workbench benötigt werden
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: wpdb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: PDz85
+      MYSQL_ROOT_PASSWORD: PDz85
+    volumes:
+      - db:/var/lib/mysql
+#Volumes = wo die daten gespeichert werden auf dem lokalen Gerät
+volumes:
+  wordpress:
+  db:
